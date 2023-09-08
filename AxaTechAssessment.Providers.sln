@@ -1,0 +1,81 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.5.33627.172
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "build", "build", "{D826E4B3-95A4-4185-AA7D-2F05C0A0A95F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{2ED93784-A47B-4A33-9CB3-CD7D1FBAF9E0}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{63A64598-5E9E-4355-B3FD-CE01E65868A9}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Entities", "Entities", "{6319C097-3539-4121-81FC-4FAFB9BE617A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "FrameworkAndDrivers", "FrameworkAndDrivers", "{4D4058AE-5D3A-47DD-90F5-20299383FE5F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InterfaceAdapters", "InterfaceAdapters", "{6719F45C-4DB6-4695-A1E0-A4A86DAE2F04}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UseCases", "UseCases", "{D177BE0A-FFF1-4111-AD3B-5F7B61F05335}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "AxaTechAssessment.Providers.Host", "src\AxaTechAssessment.Providers.Host\AxaTechAssessment.Providers.Host.csproj", "{E1C8C7F7-FDA7-4998-B2B2-B6B47D261269}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxaTechAssessment.Providers.Domain", "src\AxaTechAssessment.Providers.Domain\AxaTechAssessment.Providers.Domain.csproj", "{EC630A1C-0478-4F80-A4A5-7508A9D1BA19}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxaTechAssessment.Providers.Infrastructure", "src\AxaTechAssessment.Providers.Infrastructure\AxaTechAssessment.Providers.Infrastructure.csproj", "{FD070E3A-5B56-444D-9779-8C575983E95D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxaTechAssessment.Providers.Adapter", "src\AxaTechAssessment.Providers.Adapter\AxaTechAssessment.Providers.Adapter.csproj", "{5FA90267-6412-434C-9F2A-225B24303AA6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxaTechAssessment.Providers.Api", "src\AxaTechAssessment.Providers.Api\AxaTechAssessment.Providers.Api.csproj", "{68E03CB8-8713-4285-8FA6-61577D5A9503}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AxaTechAssessment.Providers.Application", "src\AxaTechAssessment.Providers.Application\AxaTechAssessment.Providers.Application.csproj", "{C1004A9A-C3F9-468D-AB79-E3DB2DF398A4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E1C8C7F7-FDA7-4998-B2B2-B6B47D261269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E1C8C7F7-FDA7-4998-B2B2-B6B47D261269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E1C8C7F7-FDA7-4998-B2B2-B6B47D261269}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E1C8C7F7-FDA7-4998-B2B2-B6B47D261269}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC630A1C-0478-4F80-A4A5-7508A9D1BA19}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC630A1C-0478-4F80-A4A5-7508A9D1BA19}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC630A1C-0478-4F80-A4A5-7508A9D1BA19}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC630A1C-0478-4F80-A4A5-7508A9D1BA19}.Release|Any CPU.Build.0 = Release|Any CPU
+		{FD070E3A-5B56-444D-9779-8C575983E95D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FD070E3A-5B56-444D-9779-8C575983E95D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FD070E3A-5B56-444D-9779-8C575983E95D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FD070E3A-5B56-444D-9779-8C575983E95D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FA90267-6412-434C-9F2A-225B24303AA6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FA90267-6412-434C-9F2A-225B24303AA6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FA90267-6412-434C-9F2A-225B24303AA6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FA90267-6412-434C-9F2A-225B24303AA6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{68E03CB8-8713-4285-8FA6-61577D5A9503}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{68E03CB8-8713-4285-8FA6-61577D5A9503}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{68E03CB8-8713-4285-8FA6-61577D5A9503}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{68E03CB8-8713-4285-8FA6-61577D5A9503}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1004A9A-C3F9-468D-AB79-E3DB2DF398A4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1004A9A-C3F9-468D-AB79-E3DB2DF398A4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1004A9A-C3F9-468D-AB79-E3DB2DF398A4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1004A9A-C3F9-468D-AB79-E3DB2DF398A4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{6319C097-3539-4121-81FC-4FAFB9BE617A} = {2ED93784-A47B-4A33-9CB3-CD7D1FBAF9E0}
+		{4D4058AE-5D3A-47DD-90F5-20299383FE5F} = {2ED93784-A47B-4A33-9CB3-CD7D1FBAF9E0}
+		{6719F45C-4DB6-4695-A1E0-A4A86DAE2F04} = {2ED93784-A47B-4A33-9CB3-CD7D1FBAF9E0}
+		{D177BE0A-FFF1-4111-AD3B-5F7B61F05335} = {2ED93784-A47B-4A33-9CB3-CD7D1FBAF9E0}
+		{E1C8C7F7-FDA7-4998-B2B2-B6B47D261269} = {4D4058AE-5D3A-47DD-90F5-20299383FE5F}
+		{EC630A1C-0478-4F80-A4A5-7508A9D1BA19} = {6319C097-3539-4121-81FC-4FAFB9BE617A}
+		{FD070E3A-5B56-444D-9779-8C575983E95D} = {4D4058AE-5D3A-47DD-90F5-20299383FE5F}
+		{5FA90267-6412-434C-9F2A-225B24303AA6} = {6719F45C-4DB6-4695-A1E0-A4A86DAE2F04}
+		{68E03CB8-8713-4285-8FA6-61577D5A9503} = {6719F45C-4DB6-4695-A1E0-A4A86DAE2F04}
+		{C1004A9A-C3F9-468D-AB79-E3DB2DF398A4} = {D177BE0A-FFF1-4111-AD3B-5F7B61F05335}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {274AC2D6-29C4-41FD-838F-805FD18EE20D}
+	EndGlobalSection
+EndGlobal
