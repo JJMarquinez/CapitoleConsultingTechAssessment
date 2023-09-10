@@ -6,6 +6,8 @@ public class Error
     internal string Detail { get; }
     internal int HttpStatusCode { get; }
 
+    private Error() { }
+
     private Error(string code, string detail, int httpStatusCode)
     {
         Ensure.Argument.NotNullOrEmpty(code, string.Format("{0} cannot be null or empty.", nameof(code)));

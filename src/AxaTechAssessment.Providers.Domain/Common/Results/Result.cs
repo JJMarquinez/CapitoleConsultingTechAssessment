@@ -7,6 +7,8 @@ public class Result
     private readonly bool _success;
     internal Error Error { get; }
 
+    private Result() { }
+
     private protected Result(bool success, Error error)
     {
         Ensure.Argument.NotNull(error, string.Format("{0} cannot be null.", nameof(error)));

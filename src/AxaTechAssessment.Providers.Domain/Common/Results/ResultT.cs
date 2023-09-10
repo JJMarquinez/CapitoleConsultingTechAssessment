@@ -8,7 +8,7 @@ public class Result<TValue> : Result
         : base(success, error)
         => Value = value;
 
-    public TValue Value { get; }
+    public TValue? Value { get; }
 
     public static implicit operator Result<TValue>(TValue value) => Success(value);
 
