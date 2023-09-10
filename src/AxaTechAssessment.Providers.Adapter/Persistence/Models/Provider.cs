@@ -1,4 +1,4 @@
-﻿namespace AxaTechAssessment.Providers.Infrastructure.Persistence.Models;
+﻿namespace AxaTechAssessment.Providers.Adapter.Persistence.Models;
 
 public class Provider
 {

@@ -1,4 +1,6 @@
-﻿using AxaTechAssessment.Providers.Application.Common.Results;
+﻿using AxaTechAssessment.Providers.Adapter.Common.Abstractions;
+using AxaTechAssessment.Providers.Application.Common.Errors.Builders;
+using AxaTechAssessment.Providers.Application.Common.Results;
 using AxaTechAssessment.Providers.Application.Common.Results.Builders;
 using AxaTechAssessment.Providers.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
@@ -15,13 +17,19 @@ public class Repository<TEntity>
     private readonly DbSet<TEntity> _dbSet;
     private readonly IResultDtoBuilder _resultDtoBuilder;
     private readonly IResultDtoBuilder<string?> _genericResultDtoBuilder;
+    private readonly IErrorDtoBuilder _errorDtoBuilder;
 
-    public Repository(ApplicationDbContext context, IResultDtoBuilder resultDtoBuilder, IResultDtoBuilder<string?> genericResultDtoBuilder)
+    public Repository(
+        ApplicationDbContext context, 
+        IResultDtoBuilder resultDtoBuilder, 
+        IResultDtoBuilder<string?> genericResultDtoBuilder, 
+        IErrorDtoBuilder errorDtoBuilder)
     {
         _context = context;
         _dbSet = context.Set<TEntity>();
         _resultDtoBuilder = resultDtoBuilder;
         _genericResultDtoBuilder = genericResultDtoBuilder;
+        _errorDtoBuilder = errorDtoBuilder;
     }
 
     public ResultDto Delete(object id)
@@ -41,6 +49,13 @@ public class Repository<TEntity>
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null!, 
         string includeProperties = "")
     {
+        var errorDto = _errorDtoBuilder
+            .WithCode("NotFound")
+            .WithDetail("No providers found.")
+            .WithHttpStatusCode(404)
+            .Build();
+        var resultDto = _genericResultDtoBuilder.BuildFailure(errorDto);
+
         IQueryable<TEntity> query = _dbSet;
 
         if (filter != null)
@@ -55,19 +70,44 @@ public class Repository<TEntity>
         }
 
         var entities = orderBy != null ? orderBy(query).ToList() : query.ToList();
-        return _genericResultDtoBuilder.BuildSuccess(JsonSerializer.Serialize(entities));
+        if(entities.Any())
+            resultDto = _genericResultDtoBuilder.BuildSuccess(JsonSerializer.Serialize(entities));
+
+        return resultDto;
     }
 
-    public ResultDto<string?> GetById(object id)
+    public async Task<ResultDto<string?>> GetByIdAsync(object id)
     {
-        var entity = JsonSerializer.Serialize(_dbSet.Find(id));
-        return _genericResultDtoBuilder.BuildSuccess(entity);
+        var errorDto = _errorDtoBuilder
+            .WithCode("NotFound")
+            .WithDetail(string.Format("The provider '{0}' not found.", id))
+            .WithHttpStatusCode(404)
+            .Build();
+        var resultDto = _genericResultDtoBuilder.BuildFailure(errorDto);
+
+        var entity = await _dbSet.FindAsync(id).ConfigureAwait(false);
+
+        if(entity is not null)
+            resultDto = _genericResultDtoBuilder.BuildSuccess(JsonSerializer.Serialize(entity));
+
+        return resultDto;
     }
 
-    public ResultDto Insert(TEntity entity)
+    public async Task<ResultDto> InsertAsync(TEntity entity)
     {
-        _dbSet.Add(entity);
-        return _resultDtoBuilder.BuildSuccess();
+        var errorDto = _errorDtoBuilder
+            .WithCode("InternalServerError")
+            .WithDetail("An error server occured.")
+            .WithHttpStatusCode(500)
+            .Build();
+        var resultDto = _resultDtoBuilder.BuildFailure(errorDto);
+
+        var entityEntry = await _dbSet.AddAsync(entity).ConfigureAwait(false);
+
+        if(entityEntry.State == EntityState.Added)
+            resultDto = _resultDtoBuilder.BuildSuccess();
+
+        return resultDto;
     }
 
     public ResultDto Update(TEntity entityToUpdate)

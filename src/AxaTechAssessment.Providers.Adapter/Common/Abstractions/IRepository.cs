@@ -1,7 +1,7 @@
 ﻿using AxaTechAssessment.Providers.Application.Common.Results;
 using System.Linq.Expressions;
 
-namespace AxaTechAssessment.Providers.Infrastructure.Repositories;
+namespace AxaTechAssessment.Providers.Adapter.Common.Abstractions;
 
 public interface IRepository<TEntity> where TEntity : class
 {
@@ -10,9 +10,9 @@ public interface IRepository<TEntity> where TEntity : class
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null!,
         string includeProperties = "");
 
-    ResultDto<string?> GetById(object id);
+    Task<ResultDto<string?>> GetByIdAsync(object id);
 
-    ResultDto Insert(TEntity entity);
+    Task<ResultDto> InsertAsync(TEntity entity);
 
     ResultDto Delete(object id);
 

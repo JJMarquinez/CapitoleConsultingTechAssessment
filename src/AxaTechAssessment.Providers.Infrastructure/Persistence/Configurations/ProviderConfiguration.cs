@@ -1,4 +1,4 @@
-﻿using AxaTechAssessment.Providers.Infrastructure.Persistence.Models;
+﻿using AxaTechAssessment.Providers.Adapter.Persistence.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

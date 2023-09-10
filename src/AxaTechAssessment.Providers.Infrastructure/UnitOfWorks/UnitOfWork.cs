@@ -1,13 +1,13 @@
-﻿using AxaTechAssessment.Providers.Application.Common.Results;
+﻿using AxaTechAssessment.Providers.Adapter.Common.Abstractions;
+using AxaTechAssessment.Providers.Adapter.Persistence.Models;
+using AxaTechAssessment.Providers.Application.Common.Results;
 using AxaTechAssessment.Providers.Application.Common.Results.Builders;
 using AxaTechAssessment.Providers.Infrastructure.Persistence;
-using AxaTechAssessment.Providers.Infrastructure.Persistence.Models;
-using AxaTechAssessment.Providers.Infrastructure.Repositories;
 
 namespace AxaTechAssessment.Providers.Infrastructure.UnitOfWorks;
 
 public class UnitOfWork : IUnitOfWork, IDisposable
-{
+{ 
     private bool _disposed;
     private readonly ApplicationDbContext _context;
     private readonly IRepository<Provider> _providerRepository;
@@ -22,7 +22,7 @@ public class UnitOfWork : IUnitOfWork, IDisposable
     public IRepository<Provider> GetProviderRepository() => _providerRepository;
 
     public async Task<ResultDto<int>> SaveAsync()
-        => _genericResultDtoBuilder.BuildSuccess(await _context.SaveChangesAsync());
+        => _genericResultDtoBuilder.BuildSuccess(await _context.SaveChangesAsync().ConfigureAwait(false));
 
     public void Dispose()
     {
@@ -42,5 +42,4 @@ public class UnitOfWork : IUnitOfWork, IDisposable
             this._disposed = true;
         }
     }
-
 }

@@ -1,4 +1,6 @@
-﻿using AxaTechAssessment.Providers.Infrastructure.Persistence;
+﻿using AxaTechAssessment.Providers.Adapter.Common.Abstractions;
+using AxaTechAssessment.Providers.Infrastructure.Loggers;
+using AxaTechAssessment.Providers.Infrastructure.Persistence;
 using AxaTechAssessment.Providers.Infrastructure.Repositories;
 using AxaTechAssessment.Providers.Infrastructure.UnitOfWorks;
 using Microsoft.EntityFrameworkCore;
@@ -14,5 +16,6 @@ public static class DependencyInjection
         .AddDbContextPool<ApplicationDbContext>(options => options.UseSqlServer(configuration.GetConnectionString("DefaultConnection")))
         .AddScoped<ApplicationDbContextInitialiser>()
         .AddScoped(typeof(IRepository<>), typeof(Repository<>))
-        .AddScoped<IUnitOfWork, UnitOfWork>();
+        .AddScoped<IUnitOfWork, UnitOfWork>()
+        .AddTransient<IProviderLogger, ProviderLogger>();
 }
