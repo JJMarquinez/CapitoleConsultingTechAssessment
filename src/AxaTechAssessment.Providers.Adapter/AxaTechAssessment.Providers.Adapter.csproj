@@ -6,4 +6,8 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AxaTechAssessment.Providers.Application\AxaTechAssessment.Providers.Application.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,19 +1,20 @@
-﻿using System.Linq.Expressions;
+﻿using AxaTechAssessment.Providers.Application.Common.Results;
+using System.Linq.Expressions;
 
 namespace AxaTechAssessment.Providers.Infrastructure.Repositories;
 
 public interface IRepository<TEntity> where TEntity : class
 {
-    IEnumerable<TEntity> Get(
+    ResultDto<string?> Get(
         Expression<Func<TEntity, bool>> filter = null!,
         Func<IQueryable<TEntity>, IOrderedQueryable<TEntity>> orderBy = null!,
         string includeProperties = "");
 
-    TEntity GetById(object id);
+    ResultDto<string?> GetById(object id);
 
-    void Insert(TEntity entity);
+    ResultDto Insert(TEntity entity);
 
-    void Delete(object id);
+    ResultDto Delete(object id);
 
-    void Update(TEntity entityToUpdate);
+    ResultDto Update(TEntity entityToUpdate);
 }
