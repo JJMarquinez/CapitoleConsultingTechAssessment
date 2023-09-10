@@ -4,7 +4,7 @@ namespace AxaTechAssessment.Providers.Domain.Common.Results.Builders;
 
 public class ResultBuilder : IResultBuilder
 {
-    public Result BuildFailure(Error error) => Result.Failure(error);
+    public Result BuildFailure(Error error) => Result.NewFailure(error);
 
-    public Result BuildSuccess() => Result.Success();
+    public Result BuildSuccess() => Result.NewSuccess();
 }

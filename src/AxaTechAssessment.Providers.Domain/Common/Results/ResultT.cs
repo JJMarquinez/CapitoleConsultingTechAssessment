@@ -10,7 +10,7 @@ public class Result<TValue> : Result
 
     public TValue? Value { get; }
 
-    public static implicit operator Result<TValue>(TValue value) => Success(value);
+    public static implicit operator Result<TValue>(TValue value) => NewSuccess(value);
 
     internal static Result<TValue> NewInstance(TValue value, bool success, Error error) => new(value, success, error);
 }

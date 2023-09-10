@@ -7,7 +7,7 @@ namespace AxaTechAssessment.Providers.Domain;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddADomainServices(this IServiceCollection services) 
+    public static IServiceCollection AddDomainServices(this IServiceCollection services) 
         => services
         .AddTransient<IErrorBuilder, ErrorBuilder>()
         .AddTransient<IResultBuilder, ResultBuilder>()
