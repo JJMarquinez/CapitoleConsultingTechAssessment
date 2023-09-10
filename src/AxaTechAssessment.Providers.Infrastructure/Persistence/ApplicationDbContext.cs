@@ -10,7 +10,7 @@ public class ApplicationDbContext : DbContext
     {
     }
 
-    public DbSet<Provider> Providers => Set<Provider>();
+    public DbSet<ProviderDb> Providers => Set<ProviderDb>();
 
     protected override void OnModelCreating(ModelBuilder builder)
     {

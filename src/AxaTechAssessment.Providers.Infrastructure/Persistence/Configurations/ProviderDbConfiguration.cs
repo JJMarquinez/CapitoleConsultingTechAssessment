@@ -4,10 +4,12 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace AxaTechAssessment.Providers.Infrastructure.Persistence.Configurations;
 
-public class ProviderConfiguration : IEntityTypeConfiguration<Provider>
+public class ProviderDbConfiguration : IEntityTypeConfiguration<ProviderDb>
 {
-    public void Configure(EntityTypeBuilder<Provider> builder)
+    public void Configure(EntityTypeBuilder<ProviderDb> builder)
     {
+        builder.ToTable("Provider");
+
         builder.Property(p => p.Name)
             .HasMaxLength(30)
             .IsRequired();

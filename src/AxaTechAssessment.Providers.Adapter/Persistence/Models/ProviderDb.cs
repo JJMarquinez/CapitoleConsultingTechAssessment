@@ -1,6 +1,6 @@
 ﻿namespace AxaTechAssessment.Providers.Adapter.Persistence.Models;
 
-public class Provider
+public class ProviderDb
 {
     public int ProviderId { get; set; }
     public string Name { get; set; }

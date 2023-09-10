@@ -10,16 +10,16 @@ public class UnitOfWork : IUnitOfWork, IDisposable
 { 
     private bool _disposed;
     private readonly ApplicationDbContext _context;
-    private readonly IRepository<Provider> _providerRepository;
+    private readonly IRepository<ProviderDb> _providerRepository;
     private readonly IResultDtoBuilder<int> _genericResultDtoBuilder;
 
-    public UnitOfWork(ApplicationDbContext context, IRepository<Provider> providerRepository, IResultDtoBuilder<int> genericResultDtoBuilder)
+    public UnitOfWork(ApplicationDbContext context, IRepository<ProviderDb> providerRepository, IResultDtoBuilder<int> genericResultDtoBuilder)
     {
         _context = context;
         _providerRepository = providerRepository;
         _genericResultDtoBuilder = genericResultDtoBuilder;
     }
-    public IRepository<Provider> GetProviderRepository() => _providerRepository;
+    public IRepository<ProviderDb> GetProviderRepository() => _providerRepository;
 
     public async Task<ResultDto<int>> SaveAsync()
         => _genericResultDtoBuilder.BuildSuccess(await _context.SaveChangesAsync().ConfigureAwait(false));

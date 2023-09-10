@@ -9,6 +9,6 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddAdapterServices(this IServiceCollection services)
         => services
-        .AddTransient<IProviderBuilder, ProviderBuilder>()
+        .AddTransient<IProviderDbBuilder, ProviderDbBuilder>()
         .AddTransient<IProviderAdapter, ProviderAdapter>();
 }

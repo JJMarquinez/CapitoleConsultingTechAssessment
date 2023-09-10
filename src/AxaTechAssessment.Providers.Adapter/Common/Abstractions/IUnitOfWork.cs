@@ -5,7 +5,7 @@ namespace AxaTechAssessment.Providers.Adapter.Common.Abstractions;
 
 public interface IUnitOfWork
 {
-    IRepository<Provider> GetProviderRepository();
+    IRepository<ProviderDb> GetProviderRepository();
 
     Task<ResultDto<int>> SaveAsync();
 }

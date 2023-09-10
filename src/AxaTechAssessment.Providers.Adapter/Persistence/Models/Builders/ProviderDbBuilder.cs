@@ -1,14 +1,14 @@
 ﻿namespace AxaTechAssessment.Providers.Adapter.Persistence.Models.Builders;
 
-public class ProviderBuilder : IProviderBuilder
+public class ProviderDbBuilder : IProviderDbBuilder
 {
     private int _providerId;
     private string _name;
     private string _postalAddress;
     private DateTime _createdAt;
     private string _type;
-    public Provider Build()
-        => new Provider
+    public ProviderDb Build()
+        => new ProviderDb
         {
             ProviderId = _providerId,
             Name = _name,
@@ -17,31 +17,31 @@ public class ProviderBuilder : IProviderBuilder
             Type = _type
         };
 
-    public IProviderBuilder WithCreationDate(DateTime CreatedAt)
+    public IProviderDbBuilder WithCreationDate(DateTime CreatedAt)
     {
         _createdAt = CreatedAt;
         return this;
     }
 
-    public IProviderBuilder WithName(string name)
+    public IProviderDbBuilder WithName(string name)
     {
         _name = name;
         return this;
     }
 
-    public IProviderBuilder WithPostalAddres(string postalAddres)
+    public IProviderDbBuilder WithPostalAddres(string postalAddres)
     {
         _postalAddress = postalAddres;
         return this;
     }
 
-    public IProviderBuilder WithProviderId(int providerId)
+    public IProviderDbBuilder WithProviderId(int providerId)
     {
         _providerId = providerId;
         return this;
     }
 
-    public IProviderBuilder WithType(string type)
+    public IProviderDbBuilder WithType(string type)
     {
         _type = type;
         return this;
