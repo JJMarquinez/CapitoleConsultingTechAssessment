@@ -5,5 +5,5 @@ public class ExceptionSupporter<TException>
     where TException : Exception
 {
     public bool IsSupported(Type exceptionType)
-        => typeof(TException) is Type || typeof(TException).IsAssignableFrom(exceptionType);
+        => typeof(TException).IsAssignableFrom(exceptionType);
 }
