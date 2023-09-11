@@ -10,6 +10,8 @@ public class ProviderDbConfiguration : IEntityTypeConfiguration<ProviderDb>
     {
         builder.ToTable("Provider");
 
+        builder.HasKey(p => p.ProviderId);
+
         builder.Property(p => p.Name)
             .HasMaxLength(30)
             .IsRequired();
@@ -22,6 +24,7 @@ public class ProviderDbConfiguration : IEntityTypeConfiguration<ProviderDb>
             .IsRequired();
 
         builder.Property(p => p.Type)
+            .HasMaxLength(15)
             .IsRequired();
     }
 }

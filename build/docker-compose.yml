@@ -1,0 +1,15 @@
+version: '2.2'
+
+services:
+  sqlserver:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: "Password123"
+      MSSQL_PID: "Express"
+    ports:
+      - "1435:1433"
+
+networks:
+  mydockernetwork:
+    driver: bridge
