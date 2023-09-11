@@ -16,8 +16,11 @@ public class Provider
     {
         Ensure.Argument.Is(providerId > 0, string.Format("{0} must be greater then zaro.", nameof(providerId)));
         Ensure.Argument.NotNullOrEmpty(name, string.Format("{0} cannot be null or empty.", nameof(name)));
+        Ensure.Argument.IsNot(name.Length > 30, string.Format("{0} must not to have a length greater then 30.", nameof(name)));
         Ensure.Argument.NotNullOrEmpty(postalAddress, string.Format("{0} cannot be null or empty.", nameof(postalAddress)));
+        Ensure.Argument.IsNot(postalAddress.Length > 200, string.Format("{0} must not to have a length greater then 200.", nameof(postalAddress)));
         Ensure.Argument.NotNullOrEmpty(type, string.Format("{0} cannot be null or empty.", nameof(type)));
+        Ensure.Argument.Is(DateTime.Today.CompareTo(createdAt) >= 0, string.Format("{0} must be equl or later then today.", nameof(createdAt)));
         ProviderId = providerId;
         Name = name;
         PostalAddress = postalAddress;

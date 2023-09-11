@@ -1,6 +1,7 @@
 ﻿using AxaTechAssessment.Providers.Application.Common.Errors.Builders;
 using AxaTechAssessment.Providers.Application.Common.Results.Builders;
 using AxaTechAssessment.Providers.Application.Entities.Providers.Builders;
+using FluentValidation;
 using Microsoft.Extensions.DependencyInjection;
 using System.Reflection;
 
@@ -14,6 +15,10 @@ public static class DependencyInjection
         .AddTransient<IErrorDtoBuilder, ErrorDtoBuilder>()
         .AddTransient<IResultDtoBuilder, ResultDtoBuilder>()
         .AddTransient(typeof(IResultDtoBuilder<>), typeof(ResultDtoBuilder<>))
-        .AddAutoMapper(Assembly.GetExecutingAssembly());
+        .AddAutoMapper(Assembly.GetExecutingAssembly())
+        .AddValidatorsFromAssembly(Assembly.GetExecutingAssembly())
+        .AddMediatR(cfg => {
+            cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+        });
 
 }
