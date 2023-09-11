@@ -177,4 +177,84 @@ public class ProviderTests
         Assert.Null(provider);
         Assert.Equal(String.Format("Value cannot be null. (Parameter '{0}')", BusinessString.InvalidProviderPostalAddress), exception.Message);
     }
+
+    [Fact]
+    public void ShouldThrowArgumentExceptionGivenInvalidProviderTypeWithLengthGraterThanFifteen()
+    {
+        Provider? provider = null!;
+
+        var exception = Assert.Throws<ArgumentException>(() =>
+        {
+            provider = _providerBuilder
+            .WithProviderId(1)
+            .WithName("Alex")
+            .WithPostalAddress("2 rue des invalides, Paris")
+            .WithCreatedDate(DateTime.Now)
+            .WithType("domestic domestic")
+            .Build();
+        });
+
+        Assert.Null(provider);
+        Assert.Equal(BusinessString.InvalidProviderTypeLength, exception.Message);
+    }
+
+    [Fact]
+    public void ShouldThrowArgumentExceptionGivenInvalidEmptyProviderType()
+    {
+        Provider? provider = null!;
+
+        var exception = Assert.Throws<ArgumentException>(() =>
+        {
+            provider = _providerBuilder
+            .WithProviderId(1)
+            .WithName("Alex")
+            .WithPostalAddress("2 rue des invalides, Paris")
+            .WithCreatedDate(DateTime.Now)
+            .WithType(string.Empty)
+            .Build();
+        });
+
+        Assert.Null(provider);
+        Assert.Equal(BusinessString.InvalidProviderType, exception.Message);
+    }
+
+    [Fact]
+    public void ShouldThrowArgumentExceptionGivenInvalidNullProviderType()
+    {
+        Provider? provider = null!;
+
+        var exception = Assert.Throws<ArgumentNullException>(() =>
+        {
+            provider = _providerBuilder
+            .WithProviderId(1)
+            .WithName("Alex")
+            .WithPostalAddress("2 rue des invalides, Paris")
+            .WithCreatedDate(DateTime.Now)
+            .WithType(null!)
+            .Build();
+        });
+
+        Assert.Null(provider);
+        Assert.Equal(String.Format("Value cannot be null. (Parameter '{0}')", BusinessString.InvalidProviderType), exception.Message);
+    }
+
+    [Fact]
+    public void ShouldThrowArgumentExceptionGivenInvalidEmptyProviderCreationDate()
+    {
+        Provider? provider = null!;
+
+        var exception = Assert.Throws<ArgumentException>(() =>
+        {
+            provider = _providerBuilder
+            .WithProviderId(1)
+            .WithName("Alex")
+            .WithPostalAddress("2 rue des invalides, Paris")
+            .WithCreatedDate(DateTime.Today.AddDays(-1))
+            .WithType("domestic")
+            .Build();
+        });
+
+        Assert.Null(provider);
+        Assert.Equal(BusinessString.InvalidProviderCreationDate, exception.Message);
+    }
 }
