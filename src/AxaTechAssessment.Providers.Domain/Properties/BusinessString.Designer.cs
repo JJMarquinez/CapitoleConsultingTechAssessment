@@ -61,15 +61,6 @@ namespace AxaTechAssessment.Providers.Domain.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Provider creation date must be equal or later then today..
-        /// </summary>
-        internal static string InvalidProviderCreationDate {
-            get {
-                return ResourceManager.GetString("InvalidProviderCreationDate", resourceCulture);
-            }
-        }
-        
-        /// <summary>
         ///   Looks up a localized string similar to Provider ID must be greater than zero..
         /// </summary>
         internal static string InvalidProviderId {

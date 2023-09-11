@@ -15,7 +15,7 @@ public class Provider
 
     private Provider(int providerId, string name, string postalAddress, DateTime createdAt, string type)
     {
-        RunCriticalBusinessRules(providerId, name, postalAddress, createdAt, type);
+        RunCriticalBusinessRules(providerId, name, postalAddress, type);
         ProviderId = providerId;
         Name = name;
         PostalAddress = postalAddress;
@@ -23,7 +23,7 @@ public class Provider
         Type = type;
     }
 
-    private void RunCriticalBusinessRules(int providerId, string name, string postalAddress, DateTime createdAt, string type)
+    private void RunCriticalBusinessRules(int providerId, string name, string postalAddress, string type)
     {
         Ensure.Argument.Is(providerId > 0, BusinessString.InvalidProviderId);
         Ensure.Argument.NotNullOrEmpty(name, BusinessString.InvalidProviderName);
@@ -32,7 +32,6 @@ public class Provider
         Ensure.Argument.IsNot(postalAddress.Length > 200, BusinessString.InvalidProviderPostalAddressLength);
         Ensure.Argument.NotNullOrEmpty(type, BusinessString.InvalidProviderType);
         Ensure.Argument.IsNot(type.Length > 15, BusinessString.InvalidProviderTypeLength);
-        Ensure.Argument.Is(createdAt.CompareTo(DateTime.Today) >= 0, BusinessString.InvalidProviderCreationDate);
     }
 
     internal static Provider NewInstance(int providerId, string name, string postalAddress, DateTime createdAt, string type) 
