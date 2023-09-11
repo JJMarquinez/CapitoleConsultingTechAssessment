@@ -43,7 +43,7 @@ public class ProviderAdapter : IProviderAdapter
                 .WithProviderId(providerDto.provider_id)
                 .WithName(providerDto.name)
                 .WithPostalAddres(providerDto.postal_address)
-                .WithCreationDate(providerDto.created_at)
+                .WithCreatedDate(providerDto.created_at)
                 .WithType(providerDto.type)
                 .Build();
 
@@ -76,8 +76,8 @@ public class ProviderAdapter : IProviderAdapter
             var providerDto = _providerDtoBuilder
                 .WithProviderId(providerDb!.ProviderId)
                 .WithName(providerDb.Name)
-                .WithPostalAddres(providerDb.PostalAddress)
-                .WithCreationDate(providerDb.CreatedAt)
+                .WithPostalAddress(providerDb.PostalAddress)
+                .WithCreatedDate(providerDb.CreatedAt)
                 .WithType(providerDb.Type)
                 .Build();
             resultDto = _providerResultBuilder.BuildSuccess(providerDto);

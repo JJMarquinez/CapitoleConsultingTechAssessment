@@ -14,7 +14,7 @@ public class ProvidersController : ApiControllerBase
         return Ok(await Mediator.Send(new GetProviderByIdQuery { Id = providerId }));
     }
 
-    [HttpPost("import")]
+    [HttpPost("Import")]
     public async Task<IActionResult> ImportAsync(List<ProviderDto> providers)
     {
         return Ok(await Mediator.Send(new ImportProviderCommand { Providers = providers }));

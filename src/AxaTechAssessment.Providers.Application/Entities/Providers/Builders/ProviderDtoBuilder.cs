@@ -17,7 +17,7 @@ public class ProviderDtoBuilder : IProviderDtoBuilder
             type = _type
         }; 
 
-    public IProviderDtoBuilder WithCreationDate(DateTime CreatedAt)
+    public IProviderDtoBuilder WithCreatedDate(DateTime CreatedAt)
     {
         _createdAt = CreatedAt;
         return this;
@@ -29,7 +29,7 @@ public class ProviderDtoBuilder : IProviderDtoBuilder
         return this;
     }
 
-    public IProviderDtoBuilder WithPostalAddres(string postalAddres)
+    public IProviderDtoBuilder WithPostalAddress(string postalAddres)
     {
         _postalAddress = postalAddres;
         return this;

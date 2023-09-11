@@ -4,8 +4,8 @@ public interface IProviderDtoBuilder
 {
     IProviderDtoBuilder WithProviderId(int providerId);
     IProviderDtoBuilder WithName(string name);
-    IProviderDtoBuilder WithPostalAddres(string postalAddres);
-    IProviderDtoBuilder WithCreationDate(DateTime CreatedAt);
+    IProviderDtoBuilder WithPostalAddress(string postalAddres);
+    IProviderDtoBuilder WithCreatedDate(DateTime CreatedAt);
     IProviderDtoBuilder WithType(string type);
     ProviderDto Build();
 }

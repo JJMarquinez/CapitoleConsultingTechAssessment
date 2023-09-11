@@ -17,7 +17,7 @@ public class ProviderDbBuilder : IProviderDbBuilder
             Type = _type
         };
 
-    public IProviderDbBuilder WithCreationDate(DateTime CreatedAt)
+    public IProviderDbBuilder WithCreatedDate(DateTime CreatedAt)
     {
         _createdAt = CreatedAt;
         return this;
