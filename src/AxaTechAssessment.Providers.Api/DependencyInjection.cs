@@ -1,5 +1,7 @@
 ﻿using AxaTechAssessment.Providers.Api.Exceptions.Factories;
 using AxaTechAssessment.Providers.Api.Exceptions.Handlers;
+using AxaTechAssessment.Providers.Api.Exceptions.Strategy;
+using AxaTechAssessment.Providers.Api.Exceptions.Supporters;
 using AxaTechAssessment.Providers.Api.Filters;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Versioning;
@@ -14,7 +16,9 @@ public static class DependencyInjection
     public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration)
     {
         services
+            .AddScoped<IExceptionHandlerStrategy, ExceptionHandlerStrategy>()
             .AddScoped<IExceptionHandlerFactory, ExceptionHandlerFactory>()
+            .AddScoped(typeof(IExceptionSupporter<>), typeof(ExceptionSupporter<>))
             .AddExceptionHandlers()
             .AddApiVersioning(options =>
             {

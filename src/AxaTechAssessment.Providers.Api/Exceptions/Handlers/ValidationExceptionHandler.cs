@@ -1,4 +1,5 @@
-﻿using FluentValidation;
+﻿using AxaTechAssessment.Providers.Api.Exceptions.Supporters;
+using FluentValidation;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -6,6 +7,13 @@ namespace AxaTechAssessment.Providers.Api.Exceptions.Handlers;
 
 public class ValidationExceptionHandler : IExceptionHandler
 {
+    private readonly IExceptionSupporter<ValidationException> _exceptionSupporter;
+
+    public ValidationExceptionHandler(IExceptionSupporter<ValidationException> exceptionSupporter)
+    {
+        _exceptionSupporter = exceptionSupporter;
+    }
+
     public ObjectResult Handle(Exception exception)
     {
         var validationException = (ValidationException)exception;
@@ -16,6 +24,5 @@ public class ValidationExceptionHandler : IExceptionHandler
         };
     }
 
-    public bool Support(Type exceptionType)
-        => typeof(ValidationException).IsAssignableFrom(exceptionType);
+    public bool Support(Type exceptionType) => _exceptionSupporter.IsSupported(exceptionType);
 }
