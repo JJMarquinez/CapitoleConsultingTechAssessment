@@ -5,6 +5,7 @@ using AxaTechAssessment.Providers.Adapter;
 using AxaTechAssessment.Providers.Application;
 using AxaTechAssessment.Providers.Domain;
 using AxaTechAssessment.Providers.Infrastructure.Persistence;
+using AxaTechAssessment.Providers.Host.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -24,16 +25,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
-
-    if (app.Configuration.GetValue<bool>("InitialiseDatabase"))
-    {
-        // Initialise and seed database
-        using (var scope = app.Services.CreateScope())
-        {
-            var initialiser = scope.ServiceProvider.GetRequiredService<ApplicationDbContextInitialiser>();
-            await initialiser.InitialiseAsync();
-        }
-    }
+    await app.InitialiseDatabaseAsync();
 }
 
 app.UseApiConfiguration();
