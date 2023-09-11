@@ -7,18 +7,16 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddHostServices(this IServiceCollection services)
         => services
-        //.AddEndpointsApiExplorer()
-        .AddSwaggerGen()
-        .AddCustomOpenApiDocument();
+        .AddCustomSwaggerGen();
 
-    private static IServiceCollection AddCustomOpenApiDocument(this IServiceCollection services)
+    private static IServiceCollection AddCustomSwaggerGen(this IServiceCollection services)
     {
         services.AddSwaggerGen(c => {
             c.SwaggerDoc("v1",
                 new OpenApiInfo
                 {
-                    Title = "BMJ Query Authenticator API",
-                    Description = "An ASP.NET Core Web API to query identity users' detials and get tokens",
+                    Title = "Axa Technical Assessment",
+                    Description = "An ASP.NET Core Web API to import and get providers' information",
                     TermsOfService = new Uri("https://example.com/terms"),
                     Contact = new OpenApiContact
                     {

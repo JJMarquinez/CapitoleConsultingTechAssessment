@@ -13,7 +13,7 @@ public static class DependencyInjection
         services
             .AddApiVersioning(options =>
             {
-                options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
+                options.DefaultApiVersion = new ApiVersion(1, 0);
                 options.AssumeDefaultVersionWhenUnspecified = true;
                 options.ReportApiVersions = true;
                 options.ApiVersionReader = ApiVersionReader.Combine(new UrlSegmentApiVersionReader(),
@@ -22,7 +22,6 @@ public static class DependencyInjection
             })
             .AddProblemDetails()
             .Configure<ApiBehaviorOptions>(options => options.SuppressModelStateInvalidFilter = true)
-            .AddEndpointsApiExplorer()
             .AddMvcCore(options =>
             {
                 options.Filters.Add<ApiExceptionFilterAttribute>();
@@ -32,7 +31,7 @@ public static class DependencyInjection
             {
                 options.JsonSerializerOptions.PropertyNamingPolicy = null;
             })
-            //.AddApiExplorer()
+            .AddApiExplorer()
             .AddApplicationPart(typeof(DependencyInjection).Assembly);
 
         return services;
