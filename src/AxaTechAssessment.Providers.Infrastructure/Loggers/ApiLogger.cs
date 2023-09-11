@@ -3,11 +3,11 @@ using Microsoft.Extensions.Logging;
 
 namespace AxaTechAssessment.Providers.Infrastructure.Loggers;
 
-public class ProviderLogger : IProviderLogger
+public class ApiLogger : IApiLogger
 {
     private readonly ILogger _logger;
 
-    public ProviderLogger(ILogger<ProviderApi> logger)
+    public ApiLogger(ILogger<ProviderApi> logger)
     {
         _logger = logger;
     }

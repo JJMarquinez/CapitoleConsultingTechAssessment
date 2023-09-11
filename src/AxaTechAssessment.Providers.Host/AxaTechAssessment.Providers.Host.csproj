@@ -11,4 +11,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\AxaTechAssessment.Providers.Api\AxaTechAssessment.Providers.Api.csproj" />
+    <ProjectReference Include="..\AxaTechAssessment.Providers.Infrastructure\AxaTechAssessment.Providers.Infrastructure.csproj" />
+  </ItemGroup>
+
 </Project>

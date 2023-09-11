@@ -3,7 +3,7 @@ using System.Linq.Expressions;
 
 namespace AxaTechAssessment.Providers.Adapter.Common.Abstractions;
 
-public interface IRepository<TEntity> where TEntity : class
+public interface IRepository<TEntity>
 {
     ResultDto<string?> Get(
         Expression<Func<TEntity, bool>> filter = null!,

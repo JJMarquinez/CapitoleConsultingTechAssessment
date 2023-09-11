@@ -9,9 +9,9 @@ using System.Text.Json;
 
 namespace AxaTechAssessment.Providers.Infrastructure.Repositories;
 
-public class Repository<TEntity> 
-    where TEntity : class, 
+public class Repository<TEntity> :
     IRepository<TEntity>
+    where TEntity : class
 {
     private readonly ApplicationDbContext _context;
     private readonly DbSet<TEntity> _dbSet;

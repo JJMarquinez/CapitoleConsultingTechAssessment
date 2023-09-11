@@ -1,6 +1,6 @@
 ﻿namespace AxaTechAssessment.Providers.Adapter.Common.Abstractions;
 
-public interface IProviderLogger
+public interface IApiLogger
 {
     void Debug(string messageTemplate);
     void Debug<T>(string messageTemplate, T propertyValue);

@@ -1,11 +1,25 @@
+using AxaTechAssessment.Providers.Host;
+using AxaTechAssessment.Providers.Api;
+using AxaTechAssessment.Providers.Infrastructure;
+using AxaTechAssessment.Providers.Adapter;
+using AxaTechAssessment.Providers.Application;
+using AxaTechAssessment.Providers.Domain;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services
+    .AddDomainServices()
+    .AddApplicationServices()
+    .AddAdapterServices()
+    .AddInfrastructureServices(builder.Configuration)
+    .AddApiServices(builder.Configuration)
+    .AddHostServices();
 
-builder.Services.AddControllers();
+//builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+//builder.Services.AddEndpointsApiExplorer();
+//builder.Services.AddSwaggerGen();
 
 var app = builder.Build();
 
@@ -16,10 +30,10 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
 
-app.UseAuthorization();
+//app.UseAuthorization();
 
-app.MapControllers();
-
+//app.MapControllers();
+app.UseApiConfiguration();
 app.Run();

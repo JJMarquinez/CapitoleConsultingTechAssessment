@@ -1,4 +1,5 @@
 ﻿using AxaTechAssessment.Providers.Adapter.Common.Abstractions;
+using AxaTechAssessment.Providers.Adapter.Persistence.Models;
 using AxaTechAssessment.Providers.Infrastructure.Loggers;
 using AxaTechAssessment.Providers.Infrastructure.Persistence;
 using AxaTechAssessment.Providers.Infrastructure.Repositories;
@@ -17,5 +18,5 @@ public static class DependencyInjection
         .AddScoped<ApplicationDbContextInitialiser>()
         .AddScoped(typeof(IRepository<>), typeof(Repository<>))
         .AddScoped<IUnitOfWork, UnitOfWork>()
-        .AddTransient<IProviderLogger, ProviderLogger>();
+        .AddTransient<IApiLogger, ApiLogger>();
 }
