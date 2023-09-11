@@ -16,6 +16,6 @@ public class ValidationExceptionHandler : IExceptionHandler
         };
     }
 
-    public bool IsHandled(Type exceptionType)
+    public bool Support(Type exceptionType)
         => typeof(ValidationException).IsAssignableFrom(exceptionType);
 }

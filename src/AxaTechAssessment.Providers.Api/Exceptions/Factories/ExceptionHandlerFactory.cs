@@ -15,7 +15,7 @@ public class ExceptionHandlerFactory : IExceptionHandlerFactory
         where TException : Exception
     {
         IExceptionHandler handler = null!;
-        var handlers = _exceptionHandlers.Where(handler => handler.IsHandled(exception.GetType())).ToList();
+        var handlers = _exceptionHandlers.Where(handler => handler.Support(exception.GetType())).ToList();
         var genericHandler = handlers.FirstOrDefault(handler => handler is GenericExceptionHandler);
 
         handlers.Remove(genericHandler!);

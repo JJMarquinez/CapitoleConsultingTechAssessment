@@ -31,7 +31,7 @@ public class Provider
         Ensure.Argument.IsNot(postalAddress.Length > 200, string.Format("{0} must not have a length greater than 200.", nameof(postalAddress)));
         Ensure.Argument.NotNullOrEmpty(type, string.Format("{0} cannot be null or empty.", nameof(type)));
         Ensure.Argument.IsNot(type.Length > 15, string.Format("{0} must not have a length greater than 15.", nameof(type)));
-        Ensure.Argument.Is(DateTime.Today.CompareTo(createdAt) >= 0, string.Format("{0} must be equal or later then today.", nameof(createdAt)));
+        Ensure.Argument.Is(createdAt.CompareTo(DateTime.Today) >= 0, string.Format("{0} must be equal or later then today.", nameof(createdAt)));
     }
 
     public static Provider NewInstance(int providerId, string name, string postalAddress, DateTime createdAt, string type) 

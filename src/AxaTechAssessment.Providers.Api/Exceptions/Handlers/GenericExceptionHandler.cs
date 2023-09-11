@@ -13,7 +13,7 @@ public class GenericExceptionHandler : IExceptionHandler
         };
     }
 
-    public bool IsHandled(Type exceptionType)
+    public bool Support(Type exceptionType)
         => typeof(Exception).IsAssignableFrom(exceptionType);
 
 }
