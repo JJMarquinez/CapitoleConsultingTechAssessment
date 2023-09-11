@@ -18,8 +18,8 @@ public class Result
 
     public bool IsSuccess() => _success;
     public bool IsFailure() => !IsSuccess();
-    public static Result NewSuccess() => new(true, Error.None);
-    public static Result NewFailure(Error error) => new(false, error);
-    public static Result<TValue> NewSuccess<TValue>(TValue value) => Result<TValue>.NewInstance(value, true, Error.None);
-    public static Result<TValue?> NewFailure<TValue>(Error error) => Result<TValue?>.NewInstance(default, false, error);
+    internal static Result NewSuccess() => new(true, Error.None);
+    internal static Result NewFailure(Error error) => new(false, error);
+    internal static Result<TValue> NewSuccess<TValue>(TValue value) => Result<TValue>.NewInstance(value, true, Error.None);
+    internal static Result<TValue?> NewFailure<TValue>(Error error) => Result<TValue?>.NewInstance(default, false, error);
 }

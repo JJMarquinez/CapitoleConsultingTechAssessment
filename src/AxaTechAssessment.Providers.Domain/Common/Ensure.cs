@@ -196,12 +196,12 @@ public static class Ensure
         {
             if (value == null)
             {
-                throw new ArgumentNullException(paramName, "String value cannot be null");
+                throw new ArgumentNullException(paramName);
             }
 
             if (string.Empty.Equals(value))
             {
-                throw new ArgumentException("String value cannot be empty", paramName);
+                throw new ArgumentException(paramName);
             }
         }
     }
